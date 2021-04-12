@@ -3,9 +3,15 @@ const http = require("http");
 
 //create Server
 const server = http.createServer((req,res)=>{
-    console.log(req.url, req.method, req.headers);
+    const url = req.url;
     res.setHeader('Content-Type','text/html');
-    res.write("Hello World");
+    if(url == '/'){
+        res.write("<html><head><title>Enter Message</title></head><form action='/message' method='POST'><input type='text' name='message' /><button type='submit'>Send</button></form></body></html>");
+        return res.end();
+    }
+    
+    res.write("<html><head><title>Welcom to My Node Server</title></head><body><h1>Welcom to node.js</h1></body></html>");
+    res.end();
 });
 
 //start listening on port
