@@ -6,8 +6,7 @@ const router = express.Router();
 const products = [];
 
 router.use('/add-product',(req, res, next)=>{
-    console.log('First middle ware');
-    res.sendFile(path.join(__dirname,'../','views','add-product.html'));
+    res.render('add-product');
 
 
 });
