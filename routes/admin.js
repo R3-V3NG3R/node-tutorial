@@ -1,13 +1,16 @@
 const express = require('express');
+const path = require('path');
+
 const router = express.Router();
 
-router.use('/add-products',(req, res, next)=>{
+router.use('/add-product',(req, res, next)=>{
     console.log('First middle ware');
-    res.send('<h1>Products page</h1><form action="products" method="POST"><input type="text" name="title"/><button type="submit">Add</button></form>');
+    res.sendFile(path.join(__dirname,'../','views','add-product.html'));
+
 
 });
 
-router.post('/products',(req, res, next)=>{
+router.post('/product',(req, res, next)=>{
     console.log(req.body);
     res.redirect('/');
 });
