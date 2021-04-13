@@ -14,22 +14,14 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const expressHbs = require("express-handlebars");
 
 const app = express();
 
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
-app.engine(
-  "hbs",
-  expressHbs({
-    extname: "hbs",
-    defaultLayout: 'main-layout',
-    layoutsDir: 'views/layouts',
-  })
-);
-app.set("view engine", "hbs");
+
+app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
