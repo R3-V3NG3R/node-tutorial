@@ -11,24 +11,23 @@
 // server.listen(3000);
 
 //import http
-const http = require("http");
 
 const express = require('express');
 
 const app = express();
 
-app.use((req, res, next)=>{
+app.use('/products',(req, res, next)=>{
     console.log('First middle ware');
-    next();
+    res.send('<h1>Products page</h1>');
+
 });
-app.use((req, res, next)=>{
+app.use('/',(req, res, next)=>{
     console.log('second middle ware');
+    res.send("Welcome to Node.js"); 
 });
 
 
 
-//create Server
-const server = http.createServer(app);
 
 //start listening on port
-server.listen(3000);
+app.listen(3000);
