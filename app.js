@@ -13,14 +13,24 @@
 //import http
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use('/products',(req, res, next)=>{
+app.use(bodyParser.urlencoded({extended:false}));
+
+app.use('/add-products',(req, res, next)=>{
     console.log('First middle ware');
-    res.send('<h1>Products page</h1>');
+    res.send('<h1>Products page</h1><form action="/products" method="POST"><input type="text" name="title"/><button type="submit">Add</button></form>');
 
 });
+
+app.use('/products',(req, res, next)=>{
+    console.log(req.body);
+    res.redirect('/');
+
+});
+
 app.use('/',(req, res, next)=>{
     console.log('second middle ware');
     res.send("Welcome to Node.js"); 
