@@ -50,6 +50,7 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
+  req.user.getCart().then(cart=>{}).catch(err=>{console.log(err);});
   Cart.getCart((cart) => {
     Product.fetchAll((products) => {
       const cartProducts = [];
